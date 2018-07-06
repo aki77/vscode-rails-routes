@@ -1,39 +1,46 @@
 {
-    "name": "rails-routes",
-    "displayName": "Rails Routes",
-    "description": "",
-    "version": "0.0.1",
-    "publisher": "aki77",
-    "engines": {
-        "vscode": "^1.24.0"
-    },
-    "categories": [
-        "Other"
-    ],
-    "activationEvents": [
-        "onCommand:extension.sayHello"
-    ],
-    "main": "./out/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "extension.sayHello",
-                "title": "Hello World"
-            }
-        ]
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.6",
-        "tslint": "^5.8.0",
-        "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
-    }
+  "name": "rails-routes",
+  "displayName": "Rails Routes",
+  "description": "",
+  "version": "0.0.1",
+  "publisher": "aki77",
+  "engines": {
+    "vscode": "^1.24.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aki77/vscode-rails-routes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aki77/vscode-rails-routes/issues"
+  },
+  "license": "MIT",
+  "activationEvents": [
+    "onLanguage:ruby",
+    "onLanguage:haml",
+    "onLanguage:erb",
+    "onLanguage:slim"
+  ],
+  "main": "./out/extension",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^7.0.43",
+    "@types/util.promisify": "^1.0.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.6"
+  },
+  "dependencies": {
+    "util.promisify": "^1.0.0"
+  }
 }
