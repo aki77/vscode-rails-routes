@@ -1,3 +1,4 @@
+import * as path from "path";
 import Routes from "./routes";
 import {
   CompletionItem,
@@ -6,8 +7,14 @@ import {
   TextDocument,
   Range,
   Position,
-  SnippetString
+  SnippetString,
+  Uri,
+  workspace
 } from "vscode";
+
+// NOTE: https://github.com/lodash/lodash/issues/3192
+import sortBy = require("lodash/sortBy");
+import padStart = require("lodash/padStart");
 
 const LINE_REGEXP = /(?:link_to|redirect_to|button_to|\Wvisit[(\s]|(?:url|path):\s+|(?:url|path)\s*=)/;
 
@@ -20,6 +27,22 @@ const buildSnippet = (helper: string, params: string[]) => {
   }
 
   return new SnippetString(snippet);
+};
+
+const matchScore = (path1: string, path2: string): number => {
+  const parts1 = path1.split(path.sep);
+  const parts2 = path2.split(path.sep);
+
+  let score = 0;
+  parts1.some((part, index) => {
+    if (part === parts2[index]) {
+      score += 1;
+      return false;
+    }
+    return true;
+  });
+
+  return score;
 };
 
 export default class RoutesCompletionProvider
@@ -38,11 +61,15 @@ export default class RoutesCompletionProvider
       return null;
     }
 
-    return this.buildCompletinItems();
+    return this.buildCompletinItems(document.uri);
   }
 
-  private buildCompletinItems() {
-    const items = Array.from(this.routes.getAll()).map(
+  private buildCompletinItems(currentUri: Uri) {
+    const currentController = workspace
+      .asRelativePath(currentUri)
+      .replace(/app\/(?:controllers|views)\//, "");
+
+    const itemsWithScore = Array.from(this.routes.getAll()).map(
       ([helper, { url, actions, params, controller }]) => {
         const item = new CompletionItem(
           `${helper}_path`,
@@ -52,10 +79,17 @@ export default class RoutesCompletionProvider
           .map(action => [controller, action].join("#"))
           .join(", ");
         item.insertText = buildSnippet(helper, params);
-        return item;
+        return { item, score: matchScore(currentController, controller) };
       }
     );
 
-    return items;
+    return sortBy(itemsWithScore, "score")
+      .reverse()
+      .map(({ item }, index) => {
+        // NOTE: score
+        item.sortText = padStart(index.toString(), 4, "0");
+
+        return item;
+      });
   }
 }

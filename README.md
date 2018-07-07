@@ -18,7 +18,6 @@ Completion
 
 ## TODO
 
-- [ ] sort
-- [ ] Cancel process
+- [ ] readme
 - [ ] test
 - [ ] Multi-Folder Projects
