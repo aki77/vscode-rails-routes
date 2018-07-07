@@ -4,6 +4,7 @@ import * as path from "path";
 import * as vscode from "vscode";
 import Routes from "./routes";
 import RoutesDefinitionProvider from "./RoutesDefinitionProvider";
+import RoutesCompletionProvider from "./RoutesCompletionProvider";
 
 const refreshRoutes = (routes: Routes) => {
   const progressOptions = {
@@ -26,16 +27,17 @@ export async function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.languages.registerDefinitionProvider(
-      ["erb", "haml", "slim"],
+      ["ruby", "erb", "haml", "slim"],
       new RoutesDefinitionProvider(routes)
     )
   );
 
-  // let disposable = vscode.commands.registerCommand('extension.sayHello', () => {
-  //     vscode.window.showInformationMessage('Hello World!');
-  // });
-
-  // context.subscriptions.push(disposable);
+  context.subscriptions.push(
+    vscode.languages.registerCompletionItemProvider(
+      ["erb", "haml", "slim"],
+      new RoutesCompletionProvider(routes)
+    )
+  );
 }
 
 export function deactivate() {}
