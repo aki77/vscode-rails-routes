@@ -12,10 +12,6 @@ import {
   workspace
 } from "vscode";
 
-// NOTE: https://github.com/lodash/lodash/issues/3192
-import sortBy = require("lodash/sortBy");
-import padStart = require("lodash/padStart");
-
 const LINE_REGEXP = /(?:link_to|redirect_to|button_to|\Wvisit[(\s]|(?:url|path):\s+|(?:url|path)\s*=)/;
 
 const buildSnippet = (helper: string, params: string[]) => {
@@ -83,13 +79,16 @@ export default class RoutesCompletionProvider
       }
     );
 
-    return sortBy(itemsWithScore, "score")
-      .reverse()
-      .map(({ item }, index) => {
-        // NOTE: score
-        item.sortText = padStart(index.toString(), 4, "0");
+    const scores = itemsWithScore.map(({ score }) => score);
+    const maxScore = Math.max(...scores);
+    const maxScoreItemWithScore = itemsWithScore.find(
+      ({ score }) => score === maxScore
+    );
+    if (!maxScoreItemWithScore) {
+      return null;
+    }
+    maxScoreItemWithScore.item.preselect = true;
 
-        return item;
-      });
+    return itemsWithScore.map(({ item }) => item);
   }
 }
