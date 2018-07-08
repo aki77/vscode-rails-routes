@@ -1,16 +1,16 @@
 # Rails Routes
 
-Definition and Completion provider for Rails Partial.
+Definition and Completion provider for Rails Routes.
 
 ## Features
 
 Definition
 
-[![https://gyazo.com/f47ef367e1b2b26a9bb566b3be0e5034](https://i.gyazo.com/f47ef367e1b2b26a9bb566b3be0e5034.gif)](https://gyazo.com/f47ef367e1b2b26a9bb566b3be0e5034)
+[![Image from Gyazo](https://i.gyazo.com/ad4653bb6521cbb930db780434a78109.gif)](https://gyazo.com/ad4653bb6521cbb930db780434a78109)
 
 Completion
 
-[![https://gyazo.com/c4ab035dd8a47b3c1de0ebf2160e78d7](https://i.gyazo.com/c4ab035dd8a47b3c1de0ebf2160e78d7.gif)](https://gyazo.com/c4ab035dd8a47b3c1de0ebf2160e78d7)
+[![Image from Gyazo](https://i.gyazo.com/7da9310586cbf984a5422b2d510bd1f0.gif)](https://gyazo.com/7da9310586cbf984a5422b2d510bd1f0)
 
 ## Extension Settings
 
@@ -20,6 +20,5 @@ Completion
 
 ## TODO
 
-- [ ] readme
 - [ ] test
 - [ ] Multi-Folder Projects
