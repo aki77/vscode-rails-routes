@@ -9,7 +9,6 @@ import RoutesCompletionProvider from "./RoutesCompletionProvider";
 const GLOB_PATTERN = "config/routes.rb";
 
 const refreshRoutes = (routes: Routes) => {
-  console.log("refresh");
   const progressOptions = {
     location: vscode.ProgressLocation.Window,
     title: "Loading rails routes"

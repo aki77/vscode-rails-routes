@@ -25,6 +25,23 @@
     "onLanguage:slim"
   ],
   "main": "./out/extension",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Rails Routes Configuration",
+      "properties": {
+        "railsRoutes.rakeCommand": {
+          "type": "string",
+          "enum": [
+            "bin/rake",
+            "bundle exec rake"
+          ],
+          "default": "bin/rake",
+          "description": "Rake command"
+        }
+      }
+    }
+  },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",

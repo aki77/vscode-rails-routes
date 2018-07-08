@@ -1,5 +1,6 @@
 import * as execa from "execa";
 import * as inflection from "inflection";
+import { workspace } from "vscode";
 
 const LINE_REGEXP = /(\w+)?\s+(GET|POST|PUT|PATCH|DELETE)\s+(\S+?)(?:\(\.:format\))?\s+([^#]+)#(\w+)/;
 const PARAM_REGEXP = /:\w+/;
@@ -118,7 +119,11 @@ export default class Routes {
       this.process.kill();
     }
 
-    this.process = execa("bundle", ["exec", "rake", "routes"], {
+    const rakeCommand: string = workspace.getConfiguration("railsRoutes")
+      .rakeCommand;
+    const [command, ...args] = rakeCommand.split(/\s+/);
+
+    this.process = execa(command, [...args, "routes"], {
       cwd: this.rootPath
     });
 
