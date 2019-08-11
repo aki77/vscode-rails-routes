@@ -2,11 +2,11 @@
   "name": "rails-routes",
   "displayName": "Rails Routes",
   "description": "Definition and Completion provider for Rails Routes.",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "publisher": "aki77",
   "icon": "images/icon.png",
   "engines": {
-    "vscode": "^1.25.0"
+    "vscode": "^1.36.0"
   },
   "categories": [
     "Other"
@@ -55,6 +55,7 @@
     "@types/inflection": "^1.5.28",
     "@types/mocha": "^5.2.7",
     "@types/node": "^10.12.21",
+    "@types/vscode": "^1.36.0",
     "tslint": "^5.12.1",
     "typescript": "^3.3.1",
     "vscode-test": "^1.0.2"
