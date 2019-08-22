@@ -5,6 +5,7 @@ import * as vscode from "vscode";
 import Routes from "./routes";
 import RoutesDefinitionProvider from "./RoutesDefinitionProvider";
 import RoutesCompletionProvider from "./RoutesCompletionProvider";
+import { buildSnippet } from "./util";
 
 const GLOB_PATTERN = "config/routes.rb";
 
@@ -51,6 +52,30 @@ export async function activate(context: vscode.ExtensionContext) {
       ["ruby", "erb", "haml", "slim"],
       new RoutesCompletionProvider(routes)
     )
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("railsRoutes.insert", async () => {
+      const editor = vscode.window.activeTextEditor;
+      if (!editor) {
+        return;
+      }
+
+      const items = Array.from(routes.getAll()).map(([helper, { params }]) => {
+        const snippet = buildSnippet(helper, params);
+        return {
+          snippet,
+          label: `${helper}_path`,
+          description: snippet.value
+        };
+      });
+      const item = await vscode.window.showQuickPick(items);
+      if (!item) {
+        return;
+      }
+
+      await editor.insertSnippet(item.snippet);
+    })
   );
 }
 

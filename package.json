@@ -29,7 +29,7 @@
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "Rails Routes Configuration",
+      "title": "Rails Routes",
       "properties": {
         "railsRoutes.rakeCommand": {
           "type": "string",
@@ -41,7 +41,14 @@
           "description": "Rake command"
         }
       }
-    }
+    },
+    "commands": [
+      {
+        "command": "railsRoutes.insert",
+        "category": "Rails Routes",
+        "title": "Insert url helper"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -56,12 +63,12 @@
     "@types/mocha": "^5.2.7",
     "@types/node": "^10.12.21",
     "@types/vscode": "^1.36.0",
-    "tslint": "^5.12.1",
+    "tslint": "^5.19.0",
     "typescript": "^3.3.1",
     "vscode-test": "^1.0.2"
   },
   "dependencies": {
-    "execa": "^2.0.3",
+    "execa": "^2.0.4",
     "inflection": "^1.12.0"
   }
 }

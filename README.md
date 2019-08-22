@@ -4,13 +4,19 @@ Definition and Completion provider for Rails Routes.
 
 ## Features
 
-Definition
+### Definition
 
-[![Image from Gyazo](https://i.gyazo.com/ad4653bb6521cbb930db780434a78109.gif)](https://gyazo.com/ad4653bb6521cbb930db780434a78109)
+![definition](https://i.gyazo.com/db58cc98b47d4923b35e16eb52a3987f.gif)
 
-Completion
+### Completion
 
-[![Image from Gyazo](https://i.gyazo.com/7da9310586cbf984a5422b2d510bd1f0.gif)](https://gyazo.com/7da9310586cbf984a5422b2d510bd1f0)
+![completion](https://i.gyazo.com/2478adce19549f877fcb7389bd7a1f9f.gif)
+
+## Commands
+
+### `railsRoutes.insert`
+
+![command](https://i.gyazo.com/af14a88903617584785566cce1b39ba1.gif)
 
 ## Extension Settings
 

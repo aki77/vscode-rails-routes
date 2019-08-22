@@ -7,23 +7,12 @@ import {
   TextDocument,
   Range,
   Position,
-  SnippetString,
   Uri,
   workspace
 } from "vscode";
+import { buildSnippet } from "./util";
 
 const LINE_REGEXP = /(?:link_to|redirect_to|button_to|\Wvisit[(\s]|(?:url|path):\s+|(?:url|path)\s*=)/;
-
-const buildSnippet = (helper: string, params: string[]) => {
-  let snippet = `${helper}_\${1:path}`;
-
-  if (params.length > 0) {
-    const args = params.map((param, index) => `\${${index + 2}:${param}}`);
-    snippet = `${snippet}(${args.join(", ")})\${${params.length + 2}}`;
-  }
-
-  return new SnippetString(snippet);
-};
 
 const matchScore = (path1: string, path2: string): number => {
   const parts1 = path1.split(path.sep);

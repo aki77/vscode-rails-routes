@@ -96,6 +96,9 @@ export default class Routes {
    */
   public async load() {
     const output = await this.exec();
+    if (!output) {
+      return;
+    }
     this.routes.clear();
     this.routes = parse(output);
   }
@@ -119,16 +122,21 @@ export default class Routes {
       this.process.kill();
     }
 
-    const rakeCommand: string = workspace.getConfiguration("railsRoutes")
-      .rakeCommand;
-    const [command, ...args] = rakeCommand.split(/\s+/);
+    const rakeCommand: string = workspace
+      .getConfiguration("railsRoutes")
+      .get("rakeCommand", "bin/rake");
 
-    this.process = execa(command, [...args, "routes"], {
+    this.process = execa.command(`${rakeCommand} routes`, {
       cwd: this.rootPath
     });
 
-    const { stdout } = await this.process;
-    this.process = null;
-    return stdout;
+    try {
+      const { stdout } = await this.process;
+      this.process = null;
+      return stdout;
+    } catch (error) {
+      this.process = null;
+      console.error(error.stderr);
+    }
   }
 }
