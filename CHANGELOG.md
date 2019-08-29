@@ -2,6 +2,10 @@
 
 All notable changes to the "rails-routes" extension will be documented in this file.
 
+## 0.3.1
+
+- Improve snippet
+
 ## 0.3.0
 
 - Add `railsRoutes.insert` command
