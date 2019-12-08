@@ -6,6 +6,7 @@ import Routes from "./routes";
 import RoutesDefinitionProvider from "./RoutesDefinitionProvider";
 import RoutesCompletionProvider from "./RoutesCompletionProvider";
 import { buildSnippet } from "./util";
+import debounce = require("lodash.debounce");
 
 const GLOB_PATTERN = "config/routes.rb";
 
@@ -37,7 +38,8 @@ export async function activate(context: vscode.ExtensionContext) {
       GLOB_PATTERN
     )
   );
-  fileWatcher.onDidChange(() => refreshRoutes(routes));
+  const debouncedRefreshRoutes = debounce(() => refreshRoutes(routes), 3000);
+  fileWatcher.onDidChange(debouncedRefreshRoutes);
   context.subscriptions.push(fileWatcher);
 
   context.subscriptions.push(
