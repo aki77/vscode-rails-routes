@@ -68,7 +68,7 @@
     "vscode-test": "^1.0.2"
   },
   "dependencies": {
-    "execa": "^2.0.4",
+    "execa": "^3.4.0",
     "inflection": "^1.12.0"
   }
 }
