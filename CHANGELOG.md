@@ -2,6 +2,11 @@
 
 All notable changes to the "rails-routes" extension will be documented in this file.
 
+## 0.3.2
+
+- Updated dependent packages
+- Change default setting of `railsRoutes.rakeCommand`
+
 ## 0.3.1
 
 - Improve snippet

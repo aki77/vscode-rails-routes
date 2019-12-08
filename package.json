@@ -37,7 +37,7 @@
             "bin/rake",
             "bundle exec rake"
           ],
-          "default": "bin/rake",
+          "default": "bundle exec rake",
           "description": "Rake command"
         }
       }
