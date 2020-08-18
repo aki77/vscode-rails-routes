@@ -2,6 +2,12 @@
 
 All notable changes to the "rails-routes" extension will be documented in this file.
 
+## 0.4.1
+
+### Changed
+
+- Update dependencies
+
 ## 0.4.0
 
 - Updated dependent packages
