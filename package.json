@@ -2,7 +2,7 @@
   "name": "rails-routes",
   "displayName": "Rails Routes",
   "description": "Definition and Completion provider for Rails Routes.",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "publisher": "aki77",
   "icon": "images/icon.png",
   "engines": {
