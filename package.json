@@ -31,14 +31,14 @@
       "type": "object",
       "title": "Rails Routes",
       "properties": {
-        "railsRoutes.rakeCommand": {
+        "railsRoutes.railsCommand": {
           "type": "string",
           "enum": [
-            "bin/rake",
-            "bundle exec rake"
+            "bin/rails",
+            "bundle exec rails"
           ],
-          "default": "bundle exec rake",
-          "description": "Rake command"
+          "default": "bundle exec rails",
+          "description": "Rails command"
         }
       }
     },
