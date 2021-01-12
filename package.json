@@ -31,14 +31,14 @@
       "type": "object",
       "title": "Rails Routes",
       "properties": {
-        "railsRoutes.rakeCommand": {
+        "railsRoutes.railsCommand": {
           "type": "string",
           "enum": [
-            "bin/rake",
-            "bundle exec rake"
+            "bin/rails",
+            "bundle exec rails"
           ],
-          "default": "bundle exec rake",
-          "description": "Rake command"
+          "default": "bundle exec rails",
+          "description": "Rails command"
         }
       }
     },
@@ -65,14 +65,14 @@
     "@types/mocha": "^8.0.3",
     "@types/node": "^10.12.21",
     "@types/vscode": "^1.36.0",
-    "@typescript-eslint/eslint-plugin": "^3.7.0",
-    "@typescript-eslint/parser": "^3.7.0",
+    "@typescript-eslint/eslint-plugin": "^4.13.0",
+    "@typescript-eslint/parser": "^4.13.0",
     "eslint": "^7.5.0",
-    "typescript": "^3.3.1",
+    "typescript": "^4.1.3",
     "vscode-test": "^1.0.2"
   },
   "dependencies": {
-    "execa": "^4.0.3",
+    "execa": "^5.0.0",
     "inflection": "^1.12.0",
     "lodash.debounce": "^4.0.8"
   }

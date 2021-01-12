@@ -20,9 +20,9 @@ Definition and Completion provider for Rails Routes.
 
 ## Extension Settings
 
-- `railsRoutes.rakeCommand`
-  - `bin/rake` (default)
-  - `bundle exec rake`
+- `railsRoutes.railsCommand`
+  - `bin/rails` (default)
+  - `bundle exec rails`
 
 ## TODO
 

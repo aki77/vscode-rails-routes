@@ -2,6 +2,13 @@
 
 All notable changes to the "rails-routes" extension will be documented in this file.
 
+## 0.5.0
+
+### Changed
+
+- Update dependencies
+- Change `railsRoutes.rakeCommand` to `railsRoutes.railsCommand`
+
 ## 0.4.1
 
 ### Changed

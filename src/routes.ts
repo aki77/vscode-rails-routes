@@ -122,11 +122,11 @@ export default class Routes {
       this.process.kill();
     }
 
-    const rakeCommand: string = workspace
+    const railsCommand: string = workspace
       .getConfiguration("railsRoutes")
-      .get("rakeCommand", "bin/rake");
+      .get("railsCommand", "bin/rails");
 
-    this.process = execa.command(`${rakeCommand} routes`, {
+    this.process = execa.command(`${railsCommand} routes`, {
       cwd: this.rootPath
     });
 
