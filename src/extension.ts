@@ -9,6 +9,7 @@ import { buildSnippet } from "./util";
 import debounce = require("lodash.debounce");
 
 const GLOB_PATTERN = "config/routes.rb";
+const SUB_GLOB_PATTERN = "config/routes/**/*.rb";
 
 const refreshRoutes = (routes: Routes) => {
   const progressOptions = {
@@ -32,15 +33,17 @@ export async function activate(context: vscode.ExtensionContext) {
     refreshRoutes(routes);
   });
 
-  const fileWatcher = vscode.workspace.createFileSystemWatcher(
-    new vscode.RelativePattern(
-      vscode.workspace.getWorkspaceFolder(routePath) as vscode.WorkspaceFolder,
-      GLOB_PATTERN
-    )
-  );
-  const debouncedRefreshRoutes = debounce(() => refreshRoutes(routes), 3000);
-  fileWatcher.onDidChange(debouncedRefreshRoutes);
-  context.subscriptions.push(fileWatcher);
+  [GLOB_PATTERN, SUB_GLOB_PATTERN].forEach((pattern) => {
+    const fileWatcher = vscode.workspace.createFileSystemWatcher(
+      new vscode.RelativePattern(
+        vscode.workspace.getWorkspaceFolder(routePath) as vscode.WorkspaceFolder,
+        pattern
+      )
+    );
+    const debouncedRefreshRoutes = debounce(() => refreshRoutes(routes), 3000);
+    fileWatcher.onDidChange(debouncedRefreshRoutes);
+    context.subscriptions.push(fileWatcher);
+  });
 
   context.subscriptions.push(
     vscode.languages.registerDefinitionProvider(
