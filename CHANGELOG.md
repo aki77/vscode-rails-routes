@@ -6,6 +6,7 @@ All notable changes to the "rails-routes" extension will be documented in this f
 
 ### Changed
 
+- Update dependencies
 - Support for multiple routes files
 
 ## 0.5.0
