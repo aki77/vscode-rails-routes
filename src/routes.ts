@@ -1,4 +1,5 @@
 import * as execa from "execa";
+import { ExecaReturnValue } from "execa";
 import * as inflection from "inflection";
 import { workspace } from "vscode";
 
@@ -136,7 +137,7 @@ export default class Routes {
       return stdout;
     } catch (error) {
       this.process = null;
-      console.error(error.stderr);
+      console.error((error as ExecaReturnValue).stderr);
     }
   }
 }
