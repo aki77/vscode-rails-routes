@@ -23,6 +23,8 @@ Definition and Completion provider for Rails Routes.
 - `railsRoutes.railsCommand`
   - `bin/rails` (default)
   - `bundle exec rails`
+  - `bin/rake` (legacy Rails < 5.0)
+  - `bundle exec rake` (legacy Rails < 5.0)
 
 ## TODO
 

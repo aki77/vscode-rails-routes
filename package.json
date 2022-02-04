@@ -35,10 +35,12 @@
           "type": "string",
           "enum": [
             "bin/rails",
-            "bundle exec rails"
+            "bundle exec rails",
+            "bin/rake",
+            "bundle exec rake"
           ],
           "default": "bundle exec rails",
-          "description": "Rails command"
+          "description": "Rails command (rake is only applicable for legacy Rails versions)"
         }
       }
     },
