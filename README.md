@@ -1,5 +1,8 @@
 # Rails Routes
 
+> [!WARNING]
+> **This extension is deprecated.** Please migrate to the [ruby-lsp-rails-routes](https://github.com/aki77/ruby-lsp-rails-routes) gem, a Ruby LSP add-on that provides the same features for Rails routes. It works across any editor that supports Ruby LSP.
+
 Definition and Completion provider for Rails Routes.
 
 ## Features
